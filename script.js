@@ -7,7 +7,7 @@ const templates = {
     textX: 540,
     textY: 1465,
     fontSize: 75,
-    fontColor: "#ffffff",
+    fontColor: "#9e6f6d",
     fontFamily: "Arial"
   },
   "template2.jpg": {
@@ -18,7 +18,7 @@ const templates = {
     textX: 540,
     textY: 1465,
     fontSize: 75,
-    fontColor: "#ffffff",
+    fontColor: "#005acd",
     fontFamily: "Arial"
   }
 };
