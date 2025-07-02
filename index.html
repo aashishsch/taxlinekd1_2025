@@ -1,84 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TAXLINERS - Welcome Banner Creator</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Welcome Banner Creator</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- 🔷 TAXLINERS Header Banner -->
-  <div class="header-banner">
-    <img src="your-header-image.jpg" alt="TAXLINERS Logo" />
-  </div>
+<!-- 🔷 TAXLINERS Header Banner -->
+<div class="header-banner">
+<img src="your-header-image.jpg" alt="TAXLINERS Logo" />
+</div>
 
-  <!-- Main Title Section -->
-  <div class="main-title">
-    <h1>Welcome Banner Creator</h1>
-    <p>Create professional welcome banners for TAXLINERS Event 2025</p>
-    <div>
-      <span class="feature-badge">Easy to Use</span>
-      <span class="feature-badge">Professional Quality</span>
-      <span class="feature-badge">Instant Download</span>
-    </div>
-  </div>
+<div class="container">
+<div class="left-panel">
+<h3>Template Preview</h3>
+<img id="templatePreview" src="template1.jpg" style="max-width:100%; border: 1px solid #ccc;" />
+</div>
 
-  <div class="three-column-container">
-    <!-- Column 1: Template Preview -->
-    <div class="column template-column">
-      <h3>📋 Template Preview</h3>
-      <img id="templatePreview" src="template1.jpg" alt="Template Preview" />
-    </div>
+<div class="right-panel">
+<h2>Generate Custom Banner - TAXLINERS EVENT 2025</h2>
 
-    <!-- Column 2: Info Panel -->
-    <div class="column info-column">
-      <h2>🎨 Create Your Banner</h2>
+<label>Enter Name:</label>
+<input type="text" id="userName" placeholder="Full Name" />
 
-      <div class="form-group">
-        <label>👤 Enter Your Name:</label>
-        <input type="text" id="userName" placeholder="Enter your full name" />
-      </div>
+<label>Upload Photo:</label>
+<input type="file" id="imageInput" accept="image/*" />
 
-      <div class="form-group">
-        <label>📸 Upload Your Photo:</label>
-        <input type="file" id="imageInput" accept="image/*" />
-      </div>
+<label>Select Template:</label>
+<select id="templateSelect">
+<option value="template1.jpg">Template 1</option>
+<option value="template2.jpg">Template 2</option>
+</select>
 
-      <div class="form-group">
-        <label>🎭 Select Template:</label>
-        <select id="templateSelect">
-          <option value="template1.jpg">Modern Professional Template</option>
-          <option value="template2.jpg">Creative Design Template</option>
-        </select>
-      </div>
+<div class="crop-container">
+<img id="imagePreview" />
+</div>
 
-      <div class="crop-container">
-        <img id="imagePreview" />
-      </div>
+<button id="generateBtn">Generate Banner</button>
+<button id="downloadBtn" style="display:none;">Download Banner</button>
 
-      <button id="generateBtn">🚀 Generate Banner</button>
-      <button id="downloadBtn" style="display:none;">💾 Download Banner</button>
-    </div>
+<canvas id="finalCanvas" width="1080" height="1920" style="display:none;"></canvas>
+</div>
+</div>
 
-    <!-- Column 3: Final Preview -->
-    <div class="column preview-column">
-      <h3>🎯 Final Preview</h3>
-      <canvas id="finalCanvas" width="1080" height="1920"></canvas>
-      <div class="preview-placeholder">
-        <p>Your generated banner will appear here</p>
-      </div>
-    </div>
-  </div>
+<footer>© 2025 All rights reserved by Tattva CA | For Taxliners Event 2025</footer>
 
-  <footer>
-    <p>© 2025 All rights reserved by <strong>Tattva CA</strong> | For <strong>TAXLINERS Event 2025</strong></p>
-    <p>Professional Banner Creator - Powered by Modern Web Technology</p>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-  <script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
