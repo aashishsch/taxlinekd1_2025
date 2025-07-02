@@ -87,7 +87,7 @@ generateBtn.addEventListener("click", () => {
     canvas.style.display = "block";
     downloadBtn.style.display = "inline-block";
   };
-  template.src = templateName;
+  template.src = templatePreview;
 });
 
 downloadBtn.addEventListener("click", () => {
