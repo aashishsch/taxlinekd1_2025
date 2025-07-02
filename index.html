@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome Banner Creator</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <h3>Template Preview</h3>
+      <img src="Name.jpg" style="max-width:100%; border: 1px solid #ccc;" />
+    </div>
+
+    <div class="right-panel">
+      <h2>Generate Welcome Banner</h2>
+
+      <label>Enter Name:</label>
+      <input type="text" id="userName" placeholder="Full Name" />
+
+      <label>Upload Photo:</label>
+      <input type="file" id="imageInput" accept="image/*" />
+
+      <label>Select Template:</label>
+      <select id="templateSelect">
+        <option value="Name.jpg">Template 1</option>
+        <option value="template2.jpg">Template 2</option>
+      </select>
+
+      <div class="crop-container">
+        <img id="imagePreview" />
+      </div>
+
+      <button id="generateBtn">Generate Banner</button>
+      <button id="downloadBtn" style="display:none;">Download Banner</button>
+
+      <canvas id="finalCanvas" width="1080" height="1920" style="display:none;"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+  <script src="script.js"></script>
+
+  <footer>© 2025 All rights reserved by CA Aashish Sachdev</footer>
+</body>
+
+</html>
