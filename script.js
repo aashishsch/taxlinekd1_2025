@@ -1,14 +1,14 @@
 
 const templates = {
-  "Name.jpg": {
-    imageX: 340,
-    imageY: 760,
-    radius: 200,
-    imageSize: 400,
+  "template1.jpg": {
+    imageX: 198,
+    imageY: 650,
+    radius: 342.5,
+    imageSize: 685,
     textX: 540,
-    textY: 1380,
-    fontSize: 48,
-    fontColor: "#000000",
+    textY: 1465,
+    fontSize: 75,
+    fontColor: "#ff873d",
     fontFamily: "Arial"
   },
   "template2.jpg": {
