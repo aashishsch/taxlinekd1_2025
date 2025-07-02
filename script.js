@@ -1,4 +1,3 @@
-
 const templates = {
   "template1.jpg": {
     imageX: 198,
@@ -31,6 +30,7 @@ const generateBtn = document.getElementById("generateBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 const canvas = document.getElementById("finalCanvas");
 
+// 📤 STEP 1: Load and crop uploaded image
 imageInput.addEventListener("change", function () {
   const file = this.files[0];
   if (file) {
@@ -48,13 +48,20 @@ imageInput.addEventListener("change", function () {
   }
 });
 
+// 🖼️ STEP 2: Dynamically update template preview on dropdown change
+document.getElementById("templateSelect").addEventListener("change", function () {
+  const selectedTemplate = this.value;
+  document.getElementById("templatePreview").src = selectedTemplate;
+});
+
+// 🧾 STEP 3: Generate final banner with image + name
 generateBtn.addEventListener("click", () => {
   const name = document.getElementById("userName").value.trim();
   const templateName = document.getElementById("templateSelect").value;
   const config = templates[templateName];
 
   if (!name || !cropper || !config) {
-    alert("Please enter name, crop image and select a template.");
+    alert("Please enter name, crop image, and select a template.");
     return;
   }
 
@@ -74,7 +81,13 @@ generateBtn.addEventListener("click", () => {
 
     ctx.save();
     ctx.beginPath();
-    ctx.arc(config.imageX + config.radius, config.imageY + config.radius, config.radius, 0, Math.PI * 2);
+    ctx.arc(
+      config.imageX + config.radius,
+      config.imageY + config.radius,
+      config.radius,
+      0,
+      Math.PI * 2
+    );
     ctx.clip();
     ctx.drawImage(profileImg, config.imageX, config.imageY, config.imageSize, config.imageSize);
     ctx.restore();
@@ -87,18 +100,17 @@ generateBtn.addEventListener("click", () => {
     canvas.style.display = "block";
     downloadBtn.style.display = "inline-block";
   };
+
   template.src = templateName;
 });
 
+// 💾 STEP 4: Download with user name in file
 downloadBtn.addEventListener("click", () => {
-  const canvas = document.getElementById("finalCanvas");
+  const name = document.getElementById("userName").value.trim();
+  const fileName = name ? name.replace(/\s+/g, "_") + "_banner.png" : "welcome-banner.png";
+
   const link = document.createElement("a");
   link.href = canvas.toDataURL("image/png");
-  link.download = "welcome-banner.png";
+  link.download = fileName;
   link.click();
-});
-// ✅ Place it after both buttons
-document.getElementById("templateSelect").addEventListener("change", function () {
-  const selectedTemplate = this.value;
-  document.getElementById("templatePreview").src = selectedTemplate;
 });
