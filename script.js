@@ -30,6 +30,16 @@ const generateBtn = document.getElementById("generateBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 const canvas = document.getElementById("finalCanvas");
 
+// 🔠 Convert name to Proper Case
+function toProperCase(str) {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .filter(word => word.trim().length > 0)
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
 // 📤 STEP 1: Load and crop uploaded image
 imageInput.addEventListener("change", function () {
   const file = this.files[0];
@@ -56,7 +66,9 @@ document.getElementById("templateSelect").addEventListener("change", function ()
 
 // 🧾 STEP 3: Generate final banner with image + name
 generateBtn.addEventListener("click", () => {
-  const name = document.getElementById("userName").value.trim();
+  let name = document.getElementById("userName").value.trim();
+  name = toProperCase(name); // ⬅️ Apply proper case formatting
+
   const templateName = document.getElementById("templateSelect").value;
   const config = templates[templateName];
 
@@ -104,13 +116,20 @@ generateBtn.addEventListener("click", () => {
   template.src = templateName;
 });
 
-// 💾 STEP 4: Download with user name in file
+// 💾 STEP 4: Download with user name in file (toBlob-based for better support)
 downloadBtn.addEventListener("click", () => {
-  const name = document.getElementById("userName").value.trim();
+  const canvas = document.getElementById("finalCanvas");
+  let name = document.getElementById("userName").value.trim();
+  name = toProperCase(name); // Ensure file name is also formatted
+
   const fileName = name ? name.replace(/\s+/g, "_") + "_banner.png" : "welcome-banner.png";
 
-  const link = document.createElement("a");
-  link.href = canvas.toDataURL("image/png");
-  link.download = fileName;
-  link.click();
+  canvas.toBlob(function (blob) {
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }, 'image/png');
 });
