@@ -86,3 +86,13 @@ footer {
     flex: 1 1 100%;
   }
 }
+.header-banner {
+  width: 100%;
+  height: 250px;
+  background-image: url('your-header-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 30px;
+  border-radius: 0 0 12px 12px;
+}
