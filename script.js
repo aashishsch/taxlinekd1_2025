@@ -97,3 +97,8 @@ downloadBtn.addEventListener("click", () => {
   link.download = "welcome-banner.png";
   link.click();
 });
+// ✅ Place it after both buttons
+document.getElementById("templateSelect").addEventListener("change", function () {
+  const selectedTemplate = this.value;
+  document.getElementById("templatePreview").src = selectedTemplate;
+});
