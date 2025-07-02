@@ -2,8 +2,8 @@ const templates = {
   "template1.jpg": {
     imageX: 198,
     imageY: 650,
-    radius: 342.5,
-    imageSize: 685,
+    radius: 341,
+    imageSize: 682,
     textX: 540,
     textY: 1465,
     fontSize: 75,
@@ -13,8 +13,8 @@ const templates = {
   "template2.jpg": {
     imageX: 198,
     imageY: 650,
-    radius: 342.5,
-    imageSize: 685,
+    radius: 341,
+    imageSize: 682,
     textX: 540,
     textY: 1465,
     fontSize: 75,
