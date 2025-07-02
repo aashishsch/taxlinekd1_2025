@@ -26,13 +26,15 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="panel">
+  <div class="three-column-container">
+    <!-- Column 1: Template Preview -->
+    <div class="column template-column">
       <h3>📋 Template Preview</h3>
       <img id="templatePreview" src="template1.jpg" alt="Template Preview" />
     </div>
 
-    <div class="panel">
+    <!-- Column 2: Info Panel -->
+    <div class="column info-column">
       <h2>🎨 Create Your Banner</h2>
 
       <div class="form-group">
@@ -59,8 +61,15 @@
 
       <button id="generateBtn">🚀 Generate Banner</button>
       <button id="downloadBtn" style="display:none;">💾 Download Banner</button>
+    </div>
 
-      <canvas id="finalCanvas" width="1080" height="1920" style="display:none;"></canvas>
+    <!-- Column 3: Final Preview -->
+    <div class="column preview-column">
+      <h3>🎯 Final Preview</h3>
+      <canvas id="finalCanvas" width="1080" height="1920"></canvas>
+      <div class="preview-placeholder">
+        <p>Your generated banner will appear here</p>
+      </div>
     </div>
   </div>
 
