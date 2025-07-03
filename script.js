@@ -30,16 +30,16 @@ const generateBtn = document.getElementById("generateBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 const canvas = document.getElementById("finalCanvas");
 
-// ✅ Updated function: Convert name to Proper Case, preserving prefixes
+// ✅ Format name: Preserve prefixes like CA, Dr., etc. + Proper Case for name
 function formatNameProperCase(str) {
-  const preserveCaps = ["CA", "CMA", "CMA.", "CA.", "CS", "CS.", "Dr.", "Mr.", "Ms.", "Adv."];
+  const preserveCaps = ["CA", "CA.", "CMA", "CMA.", "CS", "CS.", "DR", "DR.", "MR", "MR.", "MS", "MS.", "ADV", "ADV."];
   return str
     .trim()
     .split(/\s+/)
     .map(word => {
-      const upper = word.toUpperCase();
-      if (preserveCaps.includes(upper) || preserveCaps.includes(word)) {
-        return upper;
+      const cleaned = word.replace(/\./g, '').toUpperCase();
+      if (preserveCaps.includes(cleaned) || preserveCaps.includes(word.toUpperCase())) {
+        return word.toUpperCase();
       }
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     })
@@ -73,7 +73,7 @@ document.getElementById("templateSelect").addEventListener("change", function ()
 // 🧾 STEP 3: Generate final banner with image + name
 generateBtn.addEventListener("click", () => {
   let name = document.getElementById("userName").value.trim();
-  name = formatNameProperCase(name); // ⬅️ updated line
+  name = formatNameProperCase(name);
 
   const templateName = document.getElementById("templateSelect").value;
   const config = templates[templateName];
@@ -122,11 +122,11 @@ generateBtn.addEventListener("click", () => {
   template.src = templateName;
 });
 
-// 💾 STEP 4: Download with user name in file (toBlob-based for better support)
+// 💾 STEP 4: Download with user name in file (toBlob-based)
 downloadBtn.addEventListener("click", () => {
   const canvas = document.getElementById("finalCanvas");
   let name = document.getElementById("userName").value.trim();
-  name = formatNameProperCase(name); // ⬅️ updated line
+  name = formatNameProperCase(name);
 
   const fileName = name ? name.replace(/\s+/g, "_") + "_banner.png" : "welcome-banner.png";
 
