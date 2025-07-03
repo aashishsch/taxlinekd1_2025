@@ -32,7 +32,7 @@ const canvas = document.getElementById("finalCanvas");
 
 // ✅ Updated function: Convert name to Proper Case, preserving prefixes
 function formatNameProperCase(str) {
-  const preserveCaps = ["CA", "CA.", "CS", "CS.", "Dr.", "Mr.", "Ms.", "Adv."];
+  const preserveCaps = ["CA", "CMA", "CMA.", "CA.", "CS", "CS.", "Dr.", "Mr.", "Ms.", "Adv."];
   return str
     .trim()
     .split(/\s+/)
