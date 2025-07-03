@@ -30,14 +30,20 @@ const generateBtn = document.getElementById("generateBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 const canvas = document.getElementById("finalCanvas");
 
-// 🔠 Convert name to Proper Case
-function toProperCase(str) {
+// ✅ Updated function: Convert name to Proper Case, preserving prefixes
+function formatNameProperCase(str) {
+  const preserveCaps = ["CA", "CA.", "CS", "CS.", "Dr.", "Mr.", "Ms.", "Adv."];
   return str
-    .toLowerCase()
-    .split(' ')
-    .filter(word => word.trim().length > 0)
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+    .trim()
+    .split(/\s+/)
+    .map(word => {
+      const upper = word.toUpperCase();
+      if (preserveCaps.includes(upper) || preserveCaps.includes(word)) {
+        return upper;
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(" ");
 }
 
 // 📤 STEP 1: Load and crop uploaded image
@@ -67,7 +73,7 @@ document.getElementById("templateSelect").addEventListener("change", function ()
 // 🧾 STEP 3: Generate final banner with image + name
 generateBtn.addEventListener("click", () => {
   let name = document.getElementById("userName").value.trim();
-  name = toProperCase(name); // ⬅️ Apply proper case formatting
+  name = formatNameProperCase(name); // ⬅️ updated line
 
   const templateName = document.getElementById("templateSelect").value;
   const config = templates[templateName];
@@ -120,7 +126,7 @@ generateBtn.addEventListener("click", () => {
 downloadBtn.addEventListener("click", () => {
   const canvas = document.getElementById("finalCanvas");
   let name = document.getElementById("userName").value.trim();
-  name = toProperCase(name); // Ensure file name is also formatted
+  name = formatNameProperCase(name); // ⬅️ updated line
 
   const fileName = name ? name.replace(/\s+/g, "_") + "_banner.png" : "welcome-banner.png";
 
